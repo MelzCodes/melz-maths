@@ -1,5 +1,6 @@
 "use client";
 
+import Navbar from "@/components/Navbar";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -7,6 +8,7 @@ import { toast } from "sonner";
 export default function Home() {
   return (
     <>
+      <Navbar />
       <Button
         className="m-5"
         onClick={() =>
@@ -17,7 +19,6 @@ export default function Home() {
       >
         Show Toast
       </Button>
-      <ModeToggle />
     </>
   );
 }
