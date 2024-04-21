@@ -60,7 +60,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               <Image src="/logo.png" alt="MathsHive" width={50} height={50} />
             </a>
             <div className="hidden md:block pl-4 flex items-center justify-center text-lg uppercase font-bold">
-              Maths Hive Grindschool
+              Maths Hive
             </div>
           </div>
           <nav className="hidden mx-6 flex items-center space-x-4 lg:space-x-6 md:block">
