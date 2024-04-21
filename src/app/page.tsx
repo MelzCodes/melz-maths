@@ -1,5 +1,6 @@
 "use client";
 
+import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
@@ -16,6 +17,7 @@ export default function Home() {
       >
         Show Toast
       </Button>
+      <ModeToggle />
     </>
   );
 }
