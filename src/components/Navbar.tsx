@@ -13,22 +13,22 @@ const Navbar: React.FC<NavbarProps> = () => {
   const routes = [
     {
       href: "/resources",
-      label: "Resources",
+      label: "Exam Solutions",
+    },
+    {
+      href: "/contact-me",
+      label: "Tutoring",
     },
     {
       href: "/about-me",
       label: "About",
     },
-    {
-      href: "/contact-me",
-      label: "Contact",
-    },
   ];
 
   return (
-    <header className="sm:flex sm:justify-between py-3 px-4 border-b">
+    <header className="sm:flex sm:justify-between py-3 px-4">
       <Container>
-        <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between w-full">
+        <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 bg-secondary items-center justify-between w-full rounded-full">
           <div className="flex items-center">
             <Sheet>
               <SheetTrigger>
@@ -63,13 +63,13 @@ const Navbar: React.FC<NavbarProps> = () => {
               Maths Hive
             </div>
           </div>
-          <nav className="hidden mx-6 flex items-center space-x-4 lg:space-x-6 md:block">
+          <nav className="hidden mx-6 flex items-center sm:space-x-2 space-x-4 lg:space-x-6 md:block">
             {routes.map((route, i) => (
               <Button key={i} asChild variant="ghost">
                 <Link
                   key={i}
                   href={route.href}
-                  className="text-sm font-medium transition-colors"
+                  className="text-sm font-medium transition-colors cursor-pointer hover:bg-primary"
                 >
                   {route.label}
                 </Link>
