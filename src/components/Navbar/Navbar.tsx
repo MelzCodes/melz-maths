@@ -1,15 +1,23 @@
+"use client";
 import React from "react";
 import Image from "next/image";
-import { ModeToggle } from "./mode-toggle";
-import { Button } from "./ui/button";
+import { ModeToggle } from "../mode-toggle";
+import { Button } from "../ui/button";
 import Link from "next/link";
-import Container from "./ui/container";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import Container from "../ui/container";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Menu } from "lucide-react";
+import { useUser } from "@clerk/clerk-react";
+import { UserButton } from "@clerk/nextjs";
 
 type NavbarProps = {};
 
 const Navbar: React.FC<NavbarProps> = () => {
+  const { user, isLoaded } = useUser();
+  const waitForUser = async () => {
+    while (!isLoaded) {}
+    return user;
+  };
   const routes = [
     {
       href: "/resources",
@@ -59,11 +67,11 @@ const Navbar: React.FC<NavbarProps> = () => {
             <a href="/" className="hidden ml-4 md:block lg:ml-0 cursor-pointer">
               <Image src="/logo.png" alt="MathsHive" width={50} height={50} />
             </a>
-            <div className="hidden md:block pl-4 flex items-center justify-center text-lg uppercase font-bold">
+            <div className="hidden md:block pl-4 items-center justify-center text-lg uppercase font-bold">
               Maths Hive
             </div>
           </div>
-          <nav className="hidden mx-6 flex items-center sm:space-x-2 space-x-4 lg:space-x-6 md:block">
+          <nav className="hidden mx-6 items-center sm:space-x-2 space-x-4 lg:space-x-6 md:block">
             {routes.map((route, i) => (
               <Button key={i} asChild variant="ghost">
                 <Link
@@ -78,7 +86,19 @@ const Navbar: React.FC<NavbarProps> = () => {
           </nav>
           <div className="flex items-center space-x-4 lg:space-x-6">
             <ModeToggle />
-            <Button>Sign In</Button>
+            {isLoaded && !user && (
+              <Link
+                href="/sign-in"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 sm:px-4 rounded-md text-sm font-medium mr-4"
+              >
+                Sign In
+              </Link>
+            )}
+            {isLoaded && user && (
+              <div className="ml-auto">
+                <UserButton afterSignOutUrl="/" />
+              </div>
+            )}
           </div>
         </div>
       </Container>
