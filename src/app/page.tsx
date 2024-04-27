@@ -60,12 +60,14 @@ export default async function Home() {
           className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
         >
           Providing all the Leaving Cert Maths <br></br>{" "}
-          <Highlight className="text-black dark:text-white my-2">
-            Resources You Need
-          </Highlight>
+          <div className="my-3">
+            <Highlight className="text-black dark:text-white">
+              Resources You Need
+            </Highlight>
+          </div>
         </motion.h1>
       </div>
-      <div className="flex justify-center items-center py-5">
+      <div className="flex justify-center items-center my-10">
         <iframe
           width="560"
           height="315"
